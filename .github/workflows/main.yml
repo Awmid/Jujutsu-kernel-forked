@@ -3,7 +3,9 @@ name: Build Jujutsu Kernel (BakaSu + SUSFS, ZyC Clang)
 on:
   push:
     branches:
-      - V8        
+      - V8    
+    paths-ignore:
+      - 'README.md'
   workflow_dispatch:
 
 env:
