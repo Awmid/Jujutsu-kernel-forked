@@ -8,6 +8,7 @@ on:
       - 'README.md'
       - '.github/workflows/main2.yml'
       - '.github/workflows/null-auto.yml'
+      - 'arch/arm64/configs/blossom_noksu_defconfig'
   workflow_dispatch:
 
 env:
