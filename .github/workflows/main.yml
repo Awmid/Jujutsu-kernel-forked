@@ -6,6 +6,7 @@ on:
       - V8    
     paths-ignore:
       - 'README.md'
+      - '.github/workflows/main2.yml'
   workflow_dispatch:
 
 env:
