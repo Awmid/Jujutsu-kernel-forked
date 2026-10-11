@@ -7,6 +7,7 @@ on:
     paths-ignore:
       - 'README.md'
       - '.github/workflows/main2.yml'
+      - '.github/workflows/null-auto.yml'
   workflow_dispatch:
 
 env:
