@@ -240,17 +240,9 @@ L(done_loop):
 	/* We found a difference or a NULL before the limit was reached.  */
 	and	limit, limit, #7
 	cbz	limit, L(not_limit)
-	/* Read the last word.  */
-	sub	src1, src1, 8
-	sub	src2, src2, 8
-	ldr	data1, [src1, limit]
-	ldr	data2, [src2, limit]
-	sub	tmp1, data1, zeroones
-	orr	tmp2, data1, #REP8_7f
-	eor	diff, data1, data2	/* Non-zero if differences found.  */
-	bics	has_nul, tmp1, tmp2	/* Non-zero if NUL terminator.  */
-	ccmp	diff, #0, #0, eq
-	b.ne	L(not_limit)
+	/* Compare the last <8 bytes one at a time.  The old overlapping
+	   "last word" load could read past the end of SRC2's page.  */
+	b	L(byte_loop)
 
 L(ret0):
 	mov	result, #0
